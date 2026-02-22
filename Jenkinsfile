@@ -52,9 +52,9 @@ pipeline {
                     sh """
                     ssh -o StrictHostKeyChecking=no ec2-user@65.2.180.201 '
                         docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
-                        docker stop htmlapp || true
-                        docker rm htmlapp || true
-                        docker run -d -p 9092:80 --name htmlapp ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        docker stop htmlapps || true
+                        docker rm htmlapps || true
+                        docker run -d -p 9092:80 --name htmlapps ${DOCKER_IMAGE}:${DOCKER_TAG}
                     '
                     """
                 }
