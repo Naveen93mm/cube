@@ -46,11 +46,11 @@ pipeline {
             }
         }
 
-        stage('Deploy to VM') {
+       stage('Deploy to VM') {
             steps {
                 sshagent(['vm-ssh-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ec2-user@${DEPLOY_SERVER} '
+                    ssh -o StrictHostKeyChecking=no ec2-user@3.110.173.251 '
                         docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
                         docker stop htmlapp || true
                         docker rm htmlapp || true
