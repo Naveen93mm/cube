@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "naveen93mm/html-app"
         DOCKER_TAG = "${BUILD_NUMBER}"
-        DEPLOY_SERVER = "13.127.225.75"
+        DEPLOY_SERVER = "65.2.180.201"
     }
 
     stages {
@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sshagent(['vm-ssh-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ec2-user@3.110.173.251 '
+                    ssh -o StrictHostKeyChecking=no ec2-user@65.2.180.201 '
                         docker pull ${DOCKER_IMAGE}:${DOCKER_TAG}
                         docker stop htmlapp || true
                         docker rm htmlapp || true
